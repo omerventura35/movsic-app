@@ -1,0 +1,8 @@
+{
+  "appId": "com.movsic.app",
+  "appName": "Movsic",
+  "webDir": "www",
+  "android": {
+    "backgroundColor": "#000000"
+  }
+}
