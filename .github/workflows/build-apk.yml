@@ -15,11 +15,19 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-      - run: |
+      - name: Extract Movsic HTML into www
+        run: |
+          mkdir -p www tmp_extract
+          unzip -o "*.zip" -d tmp_extract
+          cp "$(find tmp_extract -name 'index.html' | head -n 1)" www/index.html
+          ls -lh www/index.html
+      - name: Install Capacitor & Add Android
+        run: |
           npm install
           npx cap add android
           npx cap sync android
-      - run: |
+      - name: Build Debug APK
+        run: |
           cd android
           chmod +x gradlew
           ./gradlew assembleDebug
